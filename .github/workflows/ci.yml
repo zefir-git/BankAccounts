@@ -26,9 +26,9 @@ jobs:
         run: mvn -B clean package --file pom.xml
 
       - name: Upload to release
-        uses: JasonEtco/upload-to-release@master
+        uses: cloudnode-pro/release-upload-asset@create-action
         with:
-          args: target/BankAccounts-${{ github.event.release.tag_name }}.jar application/java-archive
+          files: target/BankAccounts-${{ github.event.release.tag_name }}.jar & application/java-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
