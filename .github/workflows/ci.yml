@@ -25,6 +25,9 @@ jobs:
       - name: Build and package with Maven
         run: mvn -B clean package --file pom.xml
 
+      - name: test
+        run: echo ${{ true }} && echo ${{ false }} && echo ${{ github.context.eventName == 'release' }}
+
       - name: Upload to release
         uses: cloudnode-pro/release-upload-asset@create-action
         with:
