@@ -29,7 +29,7 @@ jobs:
         run: echo ${{ true }} && echo ${{ false }} && echo ${{ github.context.eventName == 'release' }}
 
       - name: Upload to release
-        uses: cloudnode-pro/release-upload-asset@create-action
+        uses: cloudnode-pro/release-upload-asset@publish-on-ghcr
         with:
           files: target/BankAccounts-${{ github.event.release.tag_name }}.jar; type=application/java-archive
         env:
