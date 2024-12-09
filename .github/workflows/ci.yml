@@ -28,7 +28,7 @@ jobs:
       - name: Upload to release
         uses: cloudnode-pro/release-upload-asset@create-action
         with:
-          files: target/BankAccounts-${{ github.event.release.tag_name }}.jar & application/java-archive
+          files: target/BankAccounts-${{ github.event.release.tag_name }}.jar; type=application/java-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
