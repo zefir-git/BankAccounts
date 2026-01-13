@@ -33,10 +33,10 @@ jobs:
           files: target/BankAccounts-${{ github.event.release.tag_name }}.jar; type=application/java-archive
 
       - name: Upload to Modrinth
-        uses: cloudnode-pro/modrinth-publish@v2
+        uses: cloudnode-pro/modrinth-publish@file-types
         with:
           token: ${{ secrets.MODRINTH_TOKEN }}
-          project: ${{ github.event.repository.custom_properties.modrinth_id }}
+          project: XvJJcQVO
           name: ${{ github.event.release.name == github.event.release.tag_name && format('BankAccounts {0}', github.event.release.name) || github.event.release.name }}
           version: ${{ github.event.release.tag_name }}
           changelog: ${{ github.event.release.body }}
@@ -49,4 +49,12 @@ jobs:
           game-versions: |-
             1.20.x
             1.21.x
-          files: target/BankAccounts-${{ github.event.release.tag_name }}.jar
+          files: |-
+            target/bankaccounts-${{ github.event.release.tag_name }}.jar
+            target/bankaccounts-${{ github.event.release.tag_name }}.jar.asc
+            target/bankaccounts-${{ github.event.release.tag_name }}-sources.jar
+            target/bankaccounts-${{ github.event.release.tag_name }}-sources.jar.asc
+          file-types: |-
+            bankaccounts-${{ github.event.release.tag_name }}.jar.asc=signature
+            bankaccounts-${{ github.event.release.tag_name }}-sources.jar=sources-jar
+            bankaccounts-${{ github.event.release.tag_name }}-sources.jar.asc=signature
