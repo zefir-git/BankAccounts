@@ -22,6 +22,22 @@ jobs:
 
       - name: Set version from release tag
         run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
+        
+        - name: Generate test GPG key
+	  run: |
+	    cat >keyparams <<'EOF'
+	    %no-protection
+	    Key-Type: RSA
+	    Key-Length: 4096
+	    Subkey-Type: RSA
+	    Subkey-Length: 4096
+	    Name-Real: CI Test
+	    Name-Email: ci@example.invalid
+	    Expire-Date: 1d
+	    %commit
+	    EOF
+
+	    gpg --batch --generate-key keyparams
 
       - name: Build and package Maven project
         run: mvn -B clean package verify --file pom.xml
