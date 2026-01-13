@@ -49,7 +49,7 @@ jobs:
           files: target/bankaccounts-${{ github.event.release.tag_name }}.jar; type=application/java-archive
 
       - name: Upload to Modrinth
-        uses: cloudnode-pro/modrinth-publish@file-types
+        uses: cloudnode-pro/modrinth-publish@v2
         with:
           token: ${{ secrets.MODRINTH_TOKEN }}
           project: XvJJcQVO
