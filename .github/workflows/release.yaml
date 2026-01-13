@@ -30,7 +30,7 @@ jobs:
         uses: cloudnode-pro/release-upload-asset@v1
         with:
           gh-token: ${{ github.token }}
-          files: target/BankAccounts-${{ github.event.release.tag_name }}.jar; type=application/java-archive
+          files: target/bankaccounts-${{ github.event.release.tag_name }}.jar; type=application/java-archive
 
       - name: Upload to Modrinth
         uses: cloudnode-pro/modrinth-publish@file-types
