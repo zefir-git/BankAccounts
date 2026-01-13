@@ -23,7 +23,7 @@ jobs:
       - name: Set version from release tag
         run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
         
-        - name: Generate test GPG key
+      - name: Generate test GPG key
         run: |
           cat >keyparams <<'EOF'
           %no-protection
