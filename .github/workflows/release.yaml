@@ -24,7 +24,7 @@ jobs:
         run: mvn -B versions:set -DnewVersion=${{ github.event.release.tag_name }} -DgenerateBackupPoms=false
 
       - name: Build and package Maven project
-        run: mvn -B clean package --file pom.xml
+        run: mvn -B clean package verify --file pom.xml
 
       - name: Upload to release
         uses: cloudnode-pro/release-upload-asset@v1
